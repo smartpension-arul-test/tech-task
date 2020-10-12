@@ -43,7 +43,7 @@ Jenkins Image pipelie will run as downstream pipeline for the above pipeline and
 AMI will be updated in Terraform Launch Configuration and subsequent terraform run will update Auto scaling group instances with new image
 
 
-## Using this repo  
+# Using this repo  
 ### Prerequisites  
 #### Tools to be installed in Local machine  
 Terraform  
@@ -76,6 +76,13 @@ packer build builder/railspacker.json
 
 ```
 
-
-
+# To Be Done  
+Fixing issues in Packer build for create image with Ansible provissioner
+Creating certificate in AWS certificate manager to be used in ALB listener
+Deploy Jenkins in AWS with Ansible playbook
+Create Jenkinsfile for various pipelines proposed in the Architecture
+Nginx confiuartion to acess Rails app
+Deploy MySQL database in RDS and configure database in Rails APP
+Creating Rails Application repository with Jenkinsfile
+Making code changes in Rails app to display the expected content
 
