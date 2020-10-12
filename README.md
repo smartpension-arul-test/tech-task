@@ -77,12 +77,12 @@ packer build builder/railspacker.json
 ```
 
 # To Be Done  
-Fixing issues in Packer build for create image with Ansible provissioner
-Creating certificate in AWS certificate manager to be used in ALB listener
-Deploy Jenkins in AWS with Ansible playbook
-Create Jenkinsfile for various pipelines proposed in the Architecture
-Nginx confiuartion to acess Rails app
-Deploy MySQL database in RDS and configure database in Rails APP
-Creating Rails Application repository with Jenkinsfile
-Making code changes in Rails app to display the expected content
+Fixing issues in Packer build for create image with Ansible provissioner  
+Creating certificate in AWS certificate manager to be used in ALB listener  
+Deploy Jenkins in AWS with Ansible playbook  
+Create Jenkinsfile for various pipelines proposed in the Architecture  
+Nginx confiuartion to acess Rails app  
+Deploy MySQL database in RDS and configure database in Rails APP  
+Creating Rails Application repository with Jenkinsfile  
+Making code changes in Rails app to display the expected content  
 
