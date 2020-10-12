@@ -1,0 +1,15 @@
+---
+# tasks file for dependencies
+- name: Install NodeJS
+  become: yes
+  action: >
+    {{ ansible_pkg_mgr }} name=nodejs state=present update_cache=yes
+
+- name: Display Post Install Message
+  debug:
+    msg:
+      - 'THINGS LEFT TO DO:'
+      - 'RUN THE COMMANDS BELOW:'
+      - 'ruby -v && rails -v'
+      - 'source {{ rvm_home }}/scripts/rvm'
+      - 'ruby -v && rails -v'

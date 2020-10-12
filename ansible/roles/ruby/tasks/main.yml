@@ -1,0 +1,50 @@
+---
+# tasks file for ruby
+- name: Pull Key from gpg Server
+  command: sudo gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+
+- name: Install Curl, Ruby _ Sudo Style
+  action: >
+    {{ ansible_pkg_mgr }} name={{ item }} state=present update_cache=yes
+  become: yes
+  with_items:
+    - curl
+    - ruby
+
+- name: Install Ruby-Railties _ Sudo Style
+  action: >
+    {{ ansible_pkg_mgr }} name=ruby-railties state=present update_cache=yes
+  when: ansible_os_family == "Debian" 
+  become: yes
+
+- name: curl rvm
+  shell: curl -sSL https://get.rvm.io | bash -s stable
+
+- name: Source rvm script & rvm install ruby
+  shell: source {{ rvm_home }}/scripts/rvm  && rvm install ruby
+  args:
+    executable: /bin/bash
+
+- name: Install Ruby Bundler Gem _ DEBIAN
+  register: gem
+  when: ansible_os_family == "Debian"
+  shell: source {{ rvm_home }}/scripts/rvm  && gem install bundler
+  become: true
+  args:
+    executable: /bin/bash
+- debug: var=gem.stdout_lines
+
+- name: Install Ruby Bundler Gem _ REDHAT
+  register: gem
+  when: ansible_os_family == "RedHat"
+  shell: source {{ rvm_home }}/scripts/rvm  && gem install bundler >> background 2>&1 &
+  become: true
+
+- name: Source RVM & Install Rails
+  shell: source {{ rvm_home }}/scripts/rvm  && gem install rails
+  register: source
+  become: true
+  args:
+    executable: /bin/bash
+- debug: var=source.stdout_lines
+
