@@ -39,7 +39,7 @@ resource "aws_db_instance" "smartpension_test" {
   storage_type   = "gp2"
   engine         = "mysql"
   instance_class = "db.t2.micro"
-  name           = "smartpension_test"
+  name           = "smartdb"
   username       = "aruldemo"
   password       = var.db_password
 
