@@ -55,11 +55,11 @@ After successful run of Jenkins pipeline new version of application should be ru
 We can access the application using loadbalancer dns name
 
 ## Steps to run without Jenkins  
-Install Packer, Terraform, Ansible in local system 
-Configure AWS credentials (access keys) in local system
-Clone the repo to local system
-cd to infrastructure/terraform directory
-run terraform commands
+Install Packer, Terraform, Ansible in local system  
+Configure AWS credentials (access keys) in local system  
+Clone the repo to local system  
+cd to infrastructure/terraform directory  
+run terraform commands  
  ```terraform  init```
  ```terraform  plan```
  ```terraform  apply --auto-approve```
