@@ -53,3 +53,29 @@ Configure Git webhooks to trigger pipeline when code commit happens
 When code is commited Jenkins job will run and create new AMI with latest code and create new auto scaling group with instances created from new AMI
 After successful run of Jenkins pipeline new version of application should be running in autoscaling group.
 We can access the application using loadbalancer dns name
+
+## Testing application  
+### Create table in RDS mysql instance with mysql client with below ddl command  
+```
+CREATE TABLE users ( id smallint unsigned not null auto_increment, user_name varchar(20), date_of_birth varchar(20), constraint pk_example primary key (id) );
+```
+### Sample Test Scripts
+```
+Command:
+curl -X PUT \
+  http://<Loadbalancerdns>/hello/Arul \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "dateOfBirth": "2007-06-12"
+}'
+Expected result:
+No Response message. Row should be created in users table for Arul
+
+Command:
+curl -X GET \
+  http://<Loadbalancerdns>/hello/Arul \
+  -H 'Cache-Control: no-cache'
+ Expected Result:
+ Hello Arul Your birthday is in N Day(s)
+```
