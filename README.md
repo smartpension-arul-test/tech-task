@@ -54,6 +54,26 @@ When code is commited Jenkins job will run and create new AMI with latest code a
 After successful run of Jenkins pipeline new version of application should be running in autoscaling group.
 We can access the application using loadbalancer dns name
 
+## Steps to run without Jenkins  
+Install Packer, Terraform, Ansible in local system 
+Configure AWS credentials (access keys) in local system
+Clone the repo to local system
+cd to infrastructure/terraform directory
+run terraform commands
+ ```terraform  init```
+ ```terraform  plan```
+ ```terraform  apply --auto-approve```
+Copy the RDS enpoint to application properties file  
+Copy subnets ids to terraform.tfvars in terraform-asg folder  
+cd to packer  
+run ```packer build packer.json```
+After successful run of packer command AMI will be created in the configured aws region  
+cd to terraform-asg  
+run terraform commands  
+ ```terraform  init```
+ ```terraform  plan```
+ ```terraform  apply --auto-approve```
+ 
 ## Testing application  
 ### Create table in RDS mysql instance with mysql client with below ddl command  
 ```
