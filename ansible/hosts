@@ -1,7 +1,0 @@
-[webservers]
-railsserver ansible_host=54.155.245.2 ansible_port=22 ansible_user=ubuntu
-
-[webservers:vars]
-ansible_python_interpreter=/usr/bin/python3
-ansible_pkg_mgr=apt
-rvm_home=/usr/local/rvm
