@@ -1,5 +1,15 @@
 # Devops Test
 
+## Architecture
+AWS VPC with public, private subnets, route tables and internet gateway  
+Load Balancer  
+Autoscaling group where web application instances are running  
+MySQL database running in RDS  
+Java web application  
+Jenkins for running pipeline  
+Anisble / Packer for creating AMI  
+Terrraform for creating AWS resources  
+
 ## Prerequisites  
 Install Jenkins
 Docker image with git, maven and java to act as slave container for running jenkins pipeline
@@ -41,3 +51,5 @@ Create neccessary credentials to use AWS access keys in pipeline
 Create pipeline job using Jenkinsfile provided in this repo  
 Configure Git webhooks to trigger pipeline when code commit happens  
 When code is commited Jenkins job will run and create new AMI with latest code and create new auto scaling group with instances created from new AMI
+After successful run of Jenkins pipeline new version of application should be running in autoscaling group.
+We can access the application using loadbalancer dns name
