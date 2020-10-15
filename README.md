@@ -55,7 +55,7 @@ After successful run of Jenkins pipeline new version of application should be ru
 We can access the application using loadbalancer dns name
 
 ## Steps to run without Jenkins  
-Install Packer, Terraform, Ansible in local system  
+Install Packer, Terraform, Ansible, JDK, maven in local system  
 Configure AWS credentials (access keys) in local system  
 Clone the repo to local system  
 cd to infrastructure/terraform directory  
@@ -65,6 +65,7 @@ run terraform commands
  ```terraform  apply --auto-approve```
 Copy the RDS enpoint to application properties file  
 Copy subnets ids to terraform.tfvars in terraform-asg folder  
+run ```mvn package```
 cd to packer  
 run ```packer build packer.json```
 After successful run of packer command AMI will be created in the configured aws region  
