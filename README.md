@@ -64,8 +64,13 @@ run terraform commands
  ```terraform  plan```
  ```terraform  apply --auto-approve```
 Copy the RDS enpoint to application properties file  
-Copy subnets ids to terraform.tfvars in terraform-asg folder  
-run ```mvn package```
+Copy subnets ids to terraform.tfvars in terraform-asg folder   
+run  
+```
+mvn package  
+rm -f packer/*.jar  
+cp -r target/*.jar packer  
+```  
 cd to packer  
 run ```packer build packer.json```
 After successful run of packer command AMI will be created in the configured aws region  
