@@ -40,7 +40,7 @@ pipeline {
             usernamePassword(credentialsId: 'arulawskey', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),            
           ]) {
             sh '''
-               cd terraform
+               cd terraform-asg
                terraform init -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
                terraform apply -auto-approve -var access_key=${AWS_KEY} -var secret_key=${AWS_SECRET}
             '''
