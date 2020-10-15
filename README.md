@@ -58,23 +58,25 @@ We can access the application using loadbalancer dns name
 Install Packer, Terraform, Ansible, JDK, maven in local system  
 Configure AWS credentials (access keys) in local system  
 Clone the repo to local system  
+### One time activity
 cd to infrastructure/terraform directory  
 run terraform commands  
  ```terraform  init```
  ```terraform  plan```
  ```terraform  apply --auto-approve```
 Copy the RDS enpoint to application properties file  
-Copy subnets ids to terraform.tfvars in terraform-asg folder   
-run  
+Copy subnets ids to terraform.tfvars in terraform-asg folder  
+### Repeatable for each commit    
+run   
 ```
 mvn package  
 rm -f packer/*.jar  
 cp -r target/*.jar packer  
 ```  
 cd to packer  
-run ```packer build packer.json```
-After successful run of packer command AMI will be created in the configured aws region  
-cd to terraform-asg  
+run ```packer build packer.json```  
+After successful run of packer command AMI will be created in the configured aws region   
+cd to terraform-asg   
 run terraform commands  
  ```terraform  init```
  ```terraform  plan```
