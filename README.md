@@ -27,14 +27,14 @@ In the deploy stage Jenkins pipeline will trigger terraform-asg to create asg wi
 
 
 ## Using this repo  
-```
 Clone this repository
 cd into infrastucture terraform directory
-run Terraform plan
-If plan is successsful then run terraform apply --auto-approve
+run 
+``` terraform plan ```
+If plan is successsful then run 
+``` terraform apply --auto-approve ```
 To destroy infastruture
-terraform destroy --auto-approve
-```
+``` terraform destroy --auto-approve ```
 Copy Subnets and RDS endpoint which are created from infructure terraform to terraform-asg  
 Launch Jenkins  
 Create neccessary credentials to use AWS access keys in pipeline  
