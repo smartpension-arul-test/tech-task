@@ -63,11 +63,11 @@ cd to infrastructure/terraform directory
 run terraform commands  
  ```terraform  init```
  ```terraform  plan```
- ```terraform  apply --auto-approve```
-Copy the RDS enpoint to application properties file  
+ ```terraform  apply --auto-approve```   
+Copy the RDS enpoint to src/main/resources. application.properties file  
 Copy subnets ids to terraform.tfvars in terraform-asg folder  
 ### Repeatable for each commit    
-run   
+run from root folder of repository   
 ```
 mvn package  
 rm -f packer/*.jar  
