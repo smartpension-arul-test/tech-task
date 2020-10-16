@@ -16,6 +16,8 @@ resource "aws_security_group" "smartpension-test-websg" {
   lifecycle {
     create_before_destroy = true
   }
+
+  vpc_id = var.vpc_id
 }
 
 resource "aws_security_group" "smartpension-test-elbsg" {
@@ -37,4 +39,5 @@ resource "aws_security_group" "smartpension-test-elbsg" {
   lifecycle {
     create_before_destroy = true
   }
+  vpc_id = var.vpc_id
 }

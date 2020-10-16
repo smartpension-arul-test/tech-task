@@ -47,7 +47,9 @@ If plan is successsful then run
 ``` terraform apply --auto-approve ```  
 To destroy infastruture  
 ``` terraform destroy --auto-approve ```  
-Copy Subnets and RDS endpoint which are created from infructure terraform to terraform-asg  
+Copy Subnets and vpc id which are created from infructure terraform to terraform-asg   
+Copy RDS endpoint to src/main/resources/application.properties
+
 Launch Jenkins  
 Create neccessary credentials to use AWS access keys in pipeline  
 Create pipeline job using Jenkinsfile provided in this repo  
@@ -66,8 +68,8 @@ run terraform commands
  ```terraform  init```
  ```terraform  plan```
  ```terraform  apply --auto-approve```   
-Copy the RDS enpoint to src/main/resources. application.properties file  
-Copy subnets ids to terraform.tfvars in terraform-asg folder  
+Copy the RDS enpoint to src/main/resources/application.properties file  
+Copy subnets ids and vpc id to terraform.tfvars in terraform-asg folder  
 ### Repeatable for each commit    
 run from root folder of repository   
 ```
