@@ -77,11 +77,11 @@ cd to packer
 run ```packer build packer.json```  
 After successful run of packer command AMI will be created in the configured aws region   
 cd to terraform-asg   
-run terraform commands  
- ```terraform  init```
- ```terraform  plan```
+run terraform commands   
+ ```terraform  init```   
+ ```terraform  plan```  
  ```terraform  apply --auto-approve```   
- This creats new auto scaling group with instances created from updated AMI  
+ This creats new auto scaling group with instances created from updated AMI   
  
 ## Testing application  
 ### Create table in RDS mysql instance with mysql client with below ddl command  
