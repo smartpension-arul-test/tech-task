@@ -49,7 +49,7 @@ data "aws_availability_zones" "allzones" {}
 
 resource "aws_elb" "elb1" {
   name = "terraform-elb-rev-test"
-  availability_zones = ["${data.aws_availability_zones.allzones.names}"]
+  availability_zones = flatten([data.aws_availability_zones.allzones.names])
   security_groups = [aws_security_group.smartpension-test-elbsg.id]
 
   listener {
