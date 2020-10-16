@@ -14,7 +14,9 @@ Terrraform for creating AWS resources
 Install Jenkins
 Docker image with git, maven and java to act as slave container for running jenkins pipeline
 AWS Account and access keys
-Replace ssh key pairs
+Replace ssh key pairs   
+Create s3 bucket with name smartpension-tfstate in eu-west-1 region   
+Create DynamoDB table with name sp-locks with primary key field LockID   
 
 ## Infrastucture terraform  
 ### Creates below resources  

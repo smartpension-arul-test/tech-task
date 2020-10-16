@@ -1,6 +1,7 @@
-variable "access_key" {}
+variable "profile" {}
 
-variable "secret_key" {}
+variable "aws_region" {}
+
 
 variable "public_subnet_ids" {}
 

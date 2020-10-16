@@ -1,9 +1,3 @@
-provider "aws" {
-  access_key = "${var.access_key}"
-  secret_key = "${var.secret_key}"
-  region     = "eu-west-1"
-}
-
 data "aws_ami" "smartpension-test_ami" {
   most_recent = true
 
@@ -22,28 +16,28 @@ data "aws_ami" "smartpension-test_ami" {
 
 #User data
 data "template_file" "user_data" {
-  template = "${file(var.user_data_file_path)}"
+  template = file(var.user_data_file_path)
 }
 
 resource "aws_launch_configuration" "smartpension-test_lc" {
-  image_id      = "${data.aws_ami.smartpension-test_ami.id}"
+  image_id      = data.aws_ami.smartpension-test_ami.id
   instance_type = "t2.micro"
-  key_name = "${aws_key_pair.arulkeypair.key_name}"
+  key_name = aws_key_pair.arulkeypair.key_name
   security_groups = [aws_security_group.smartpension-test-websg.id]
   lifecycle {
     create_before_destroy = true
   }
-  user_data = "${data.template_file.user_data.rendered}"
+  user_data = data.template_file.user_data.rendered
 }
 
 resource "aws_autoscaling_group" "smartpension-test_asg" {
   name                 = "terraform-asg-rev-test-${aws_launch_configuration.smartpension-test_lc.name}"
-  launch_configuration = "${aws_launch_configuration.smartpension-test_lc.name}"
+  launch_configuration = aws_launch_configuration.smartpension-test_lc.name
   vpc_zone_identifier  =  var.public_subnet_ids
   min_size             = 1
   max_size             = 2
 
-  load_balancers = ["${aws_elb.elb1.id}"]
+  load_balancers = [aws_elb.elb1.id]
   health_check_type = "ELB"
 
   lifecycle {
@@ -85,5 +79,5 @@ resource "aws_elb" "elb1" {
 
 resource "aws_key_pair" "arulkeypair" {
   key_name   = "arulkeypair1"
-  public_key = "${var.id_rsa_pub}"
+  public_key = var.id_rsa_pub
 }
