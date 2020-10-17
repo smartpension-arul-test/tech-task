@@ -96,7 +96,7 @@ CREATE TABLE users ( id smallint unsigned not null auto_increment, user_name var
 ```
 Command:
 curl -X PUT \
-  http://<Loadbalancerdns>/hello/Arul \
+  http://<Loadbalancerdns>:8080/hello/Arul \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -107,7 +107,7 @@ No Response message. Row should be created in users table for Arul
 
 Command:
 curl -X GET \
-  http://<Loadbalancerdns>/hello/Arul \
+  http://<Loadbalancerdns>:8080/hello/Arul \
   -H 'Cache-Control: no-cache'
  Expected Result:
  Hello Arul Your birthday is in N Day(s)
