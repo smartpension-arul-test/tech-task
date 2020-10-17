@@ -74,8 +74,8 @@ Copy subnets ids and vpc id to terraform.tfvars in terraform-asg folder
 run from root folder of repository   
 ```
 mvn package  
-rm -f packer/*.jar  
-cp -r target/*.jar packer  
+rm -f packer/packer/*.jar  
+cp -r target/*.jar packer/packer  
 ```  
 cd to packer  
 run ```packer build packer.json```  
